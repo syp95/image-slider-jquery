@@ -1,0 +1,154 @@
+body {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    height: 100vh;
+    font-family: 'Roboto', sans-serif;
+    transition: 0.25s;
+}
+body .credit {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    color: inherit;
+}
+body .options-wrapper {
+    overflow: hidden;
+}
+body .options {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+
+    max-width: 900px;
+    width: 100%;
+    height: 400px;
+    transition: 0.5s;
+}
+
+body .options .option {
+    position: relative;
+    overflow: hidden;
+    min-width: 60px;
+    margin: 10px;
+    background: var(--optionBackground, var(--defaultBackground, #e6e9ed));
+    background-size: auto 120%;
+    background-position: center;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+body .options .option.active {
+    flex-grow: 10000;
+    transform: scale(1);
+    min-width: 600px;
+    margin: 0px;
+    border-radius: 40px;
+    background-size: auto 100%;
+}
+
+@media screen and (max-width: 940px) {
+    body .options {
+        max-width: 560px;
+        height: 300px;
+    }
+    body .options .option.active {
+        min-width: 440px;
+    }
+    body .options .option {
+        min-width: 40px;
+    }
+}
+
+body .options .option.active .icon {
+    position: absolute;
+    opacity: 0;
+    z-index: -99;
+    transition: 0.3s;
+}
+body .options .option.active .shadow {
+    box-shadow: inset 0 -120px 120px -120px black,
+        inset 0 -120px 120px -100px black;
+}
+body .options .option.active .label {
+    bottom: 20px;
+    left: 20px;
+    -webkit-touch-callout: none;
+    user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -webkit-user-select: none;
+}
+body .options .option.active .label .info > div {
+    left: 0px;
+    opacity: 1;
+}
+body .options .option:not(.active) {
+    flex-grow: 1;
+    border-radius: 30px;
+}
+body .options .option:not(.active) .shadow {
+    bottom: -40px;
+    box-shadow: inset 0 -120px 0px -120px black, inset 0 -120px 0px -100px black;
+}
+body .options .option:not(.active) .label {
+    bottom: 10px;
+    left: 10px;
+}
+body .options .option:not(.active) .label .info > div {
+    left: 20px;
+    opacity: 0;
+}
+body .options .option .shadow {
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    height: 120px;
+    transition: 0.5s cubic-bezier(0.05, 0.61, 0.41, 0.95);
+}
+body .options .option .label {
+    display: flex;
+    position: absolute;
+    right: 0px;
+    height: 40px;
+    transition: 0.5s cubic-bezier(0.05, 0.61, 0.41, 0.95);
+}
+body .options .option .label .icon {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    min-width: 40px;
+    max-width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    background-color: white;
+    color: var(--defaultBackground);
+}
+body .options .option .label .info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 10px;
+    color: white;
+    white-space: pre;
+    -webkit-touch-callout: none;
+    user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -webkit-user-select: none;
+}
+body .options .option .label .info > div {
+    position: relative;
+    transition: 0.5s cubic-bezier(0.05, 0.61, 0.41, 0.95), opacity 0.5s ease-out;
+}
+body .options .option .label .info .main {
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+body .options .option .label .info .sub {
+    transition-delay: 0.1s;
+}
